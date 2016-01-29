@@ -55,30 +55,31 @@ memcached:                              active
 
 如果需要重启计算节点，首先先把该节点上的所有云主机迁移到其他节点。
 
-1. 查找需要移动的所有云主机
+查找需要移动的所有云主机
 
 ```
 # source ~/openrc
 # nova list --host c01.example.com --all-tenants
 ```
 
-2. 将这些云主机逐个迁移到其他节点
+将这些云主机逐个迁移到其他节点
 
 `# nova live-migration <uuid> c02.example.com`
 
 如果没有使用共享存储保存云主机的root磁盘，需要指定`--block-migrate`选项，将云主机存储一起迁移。
 
-3. 停止计算服务
+停止计算服务，并进行节点维护
 
 `# service stop openstack-nova-compute`
 
-4. 重启后检查服务状态
+重启后检查服务状态
 
 完成计算节点重启后，检查计算服务是否正常启动。
 
 `# service status openstack-nova-compute`
 
 还需要检查计算服务是否连接上了消息中间件。注意下面输出的时间是执行重启操作的时间。
+
 
 ```
 # grep AMQP /var/log/nova/compute.log | tail -n 1

@@ -49,7 +49,7 @@ Cinder提供块存储服务，为云主机提供持久块设备。Cinder有以�
 
 ## keystone - 认证服务
 
-Keystone为平台提供统一的认证服务以及内部服务目录管理。Keystone有一个服务openstack-keystone。
+Keystone为平台提供统一的认证服务以及内部服务目录管理。Keystone有一个服务`openstack-keystone`。
 
 ## horizon - 管理控制台
 
